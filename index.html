@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClearSpace — Premium Cleaning...</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <meta name="description" content="ClearSpace — Premium cleaning services for residential, commercial, and specialized properties in South Africa. Professional, eco-friendly cleaning solutions."/>
+  <meta name="theme-color" content="#0e1014"/>
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="business.business"/>
+  <meta property="og:title" content="ClearSpace — Premium Cleaning Services"/>
+  <meta property="og:description" content="Professional cleaning services tailored to every scale. From residential deep cleans to post-construction restoration."/>
+  <meta property="og:site_name" content="ClearSpace"/>
+  
+  <title>ClearSpace — Premium Cleaning Services | Professional & Eco-Friendly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" defer/>
+  
   <style>
     :root {
       --bg:       #0e1014;
@@ -29,7 +39,7 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
     }
 
     /* Custom cursor */
@@ -42,7 +52,9 @@
       z-index: 9999;
       transform: translate(-50%, -50%);
       transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+      display: none;
     }
+    .cursor.visible { display: block; }
     .cursor-ring {
       position: fixed;
       width: 36px; height: 36px;
@@ -53,8 +65,9 @@
       transform: translate(-50%, -50%);
       transition: transform 0.18s ease, width 0.25s, height 0.25s, opacity 0.2s;
       opacity: 0.5;
+      display: none;
     }
-    body:hover .cursor { opacity: 1; }
+    .cursor-ring.visible { display: block; }
 
     /* NAV */
     nav {
@@ -72,6 +85,7 @@
       font-weight: 300;
       letter-spacing: 0.12em;
       color: var(--ice);
+      text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -83,7 +97,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover, .nav-links a:focus { color: var(--accent); outline: none; }
     .nav-cta {
       font-size: 0.78rem;
       letter-spacing: 0.1em;
@@ -92,10 +106,11 @@
       border: 1px solid var(--accent);
       color: var(--accent);
       background: transparent;
-      cursor: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
       transition: background 0.2s, color 0.2s;
     }
-    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+    .nav-cta:hover, .nav-cta:focus { background: var(--accent); color: var(--bg); outline: none; }
 
     /* HERO */
     #hero {
@@ -164,12 +179,12 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       border: none;
-      cursor: none;
+      cursor: pointer;
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-primary:hover { background: var(--ice); transform: translateY(-2px); }
+    .btn-primary:hover, .btn-primary:focus { background: var(--ice); transform: translateY(-2px); outline: none; }
     .btn-ghost {
       padding: 14px 32px;
       background: transparent;
@@ -178,11 +193,11 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       border: 1px solid var(--border);
-      cursor: none;
+      cursor: pointer;
       font-family: 'DM Sans', sans-serif;
       transition: border-color 0.2s, color 0.2s, transform 0.15s;
     }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .btn-ghost:hover, .btn-ghost:focus { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); outline: none; }
 
     /* STATS STRIP */
     .stats-strip {
@@ -253,7 +268,7 @@
       position: relative;
       overflow: hidden;
       transition: background 0.3s;
-      cursor: none;
+      cursor: pointer;
     }
     .service-card::before {
       content: '';
@@ -265,12 +280,13 @@
       transform-origin: left;
       transition: transform 0.35s ease;
     }
-    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover::before, .service-card:focus::before { transform: scaleX(1); }
     .service-card:hover { background: var(--panel); }
     .service-icon {
       font-size: 2.2rem;
       margin-bottom: 24px;
       display: block;
+      aria-hidden: true;
     }
     .service-name {
       font-family: 'Cormorant Garamond', serif;
@@ -329,12 +345,13 @@
       padding: 14px 18px;
       outline: none;
       transition: border-color 0.2s;
-      cursor: none;
+      cursor: auto;
     }
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(126, 184, 212, 0.1);
     }
     .form-group select option { background: var(--panel); }
     .form-group textarea { resize: vertical; min-height: 110px; }
@@ -378,12 +395,12 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: none;
-      cursor: none;
+      cursor: pointer;
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-submit:hover { background: var(--ice); transform: translateY(-2px); }
+    .btn-submit:hover, .btn-submit:focus { background: var(--ice); transform: translateY(-2px); outline: none; }
 
     /* TESTIMONIALS */
     #testimonials { padding: 120px 60px; }
@@ -411,6 +428,7 @@
       opacity: 0.2;
       line-height: 0.6;
       margin-bottom: 24px;
+      aria-hidden: true;
     }
     .testimonial-text {
       font-size: 0.92rem;
@@ -431,7 +449,7 @@
       font-weight: 500;
       margin-bottom: 4px;
     }
-    .stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 18px; }
+    .stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 18px; aria-label: "5 out of 5 stars"; }
 
     /* CONTACT */
     #contact {
@@ -455,6 +473,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem;
       flex-shrink: 0;
+      aria-hidden: true;
     }
     .contact-info-text { font-size: 0.88rem; line-height: 1.7; color: var(--muted); }
     .contact-info-text strong { display: block; color: var(--light); font-weight: 400; margin-bottom: 4px; }
@@ -469,10 +488,13 @@
       padding: 14px 18px;
       outline: none;
       transition: border-color 0.2s;
-      cursor: none;
+      cursor: auto;
     }
     .contact-form input:focus,
-    .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea:focus { 
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(126, 184, 212, 0.1);
+    }
     .contact-form textarea { resize: vertical; min-height: 130px; }
 
     /* SUCCESS MESSAGE */
@@ -484,6 +506,7 @@
       font-size: 0.85rem;
       letter-spacing: 0.06em;
       display: none;
+      role: alert;
     }
     .success-msg.show { display: block; }
 
@@ -532,14 +555,21 @@
       background: var(--border);
       outline: none;
       margin-top: 10px;
-      cursor: none;
+      cursor: pointer;
     }
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 18px; height: 18px;
       background: var(--accent);
       border-radius: 50%;
-      cursor: none;
+      cursor: pointer;
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 18px; height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
     }
     .range-output {
       font-size: 0.9rem;
@@ -556,12 +586,13 @@
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem;
-      cursor: none;
+      cursor: pointer;
       z-index: 500;
       box-shadow: 0 4px 24px rgba(126,184,212,0.25);
       transition: transform 0.2s, background 0.2s;
+      border: none;
     }
-    .chat-fab:hover { transform: scale(1.1); background: var(--ice); }
+    .chat-fab:hover, .chat-fab:focus { transform: scale(1.1); background: var(--ice); outline: none; }
     .chat-panel {
       position: fixed;
       bottom: 108px; right: 36px;
@@ -572,6 +603,7 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
+      border-radius: 8px;
     }
     .chat-panel.open { display: flex; }
     .chat-header {
@@ -629,7 +661,10 @@
       font-size: 0.85rem;
       padding: 14px 16px;
       outline: none;
-      cursor: none;
+      cursor: auto;
+    }
+    .chat-input-row input:focus {
+      border-color: var(--accent);
     }
     .chat-send {
       padding: 0 18px;
@@ -637,10 +672,10 @@
       border: none;
       color: var(--bg);
       font-size: 1rem;
-      cursor: none;
+      cursor: pointer;
       transition: background 0.2s;
     }
-    .chat-send:hover { background: var(--ice); }
+    .chat-send:hover, .chat-send:focus { background: var(--ice); outline: none; }
 
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
@@ -663,43 +698,39 @@
 </head>
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Clear<span>Space</span></div>
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#home" class="nav-logo">Clear<span>Space</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#quote">Quote</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="scrollToQuote()">Book Now</button>
+  <button class="nav-cta" onclick="scrollToQuote()" aria-label="Book Now">Book Now</button>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Premium Cleaning Services</p>
-    <h1 class="hero-title">
+    <h1 class="hero-title" id="hero-title">
       Spaces that<br/><em>breathe</em>
     </h1>
     <p class="hero-sub">
       We bring meticulous care and professional-grade results to every space we touch — from executive offices to private residences.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollToQuote()">Get a Free Quote</button>
-      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services</button>
+      <button class="btn-primary" onclick="scrollToQuote()" aria-label="Get a Free Quote">Get a Free Quote</button>
+      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" aria-label="View Our Services">Our Services</button>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats-strip">
+<div class="stats-strip" role="region" aria-label="Key Statistics">
   <div class="stat-item">
     <div class="stat-num" data-count="1200">0</div>
     <div class="stat-label">Clients Served</div>
@@ -719,46 +750,46 @@
 </div>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" aria-labelledby="services-title">
   <div class="section-header reveal">
     <div>
       <p class="section-tag">What we offer</p>
-      <h2 class="section-title">Tailored cleaning,<br/><em>every scale</em></h2>
+      <h2 class="section-title" id="services-title">Tailored cleaning,<br/><em>every scale</em></h2>
     </div>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-icon">🏠</span>
+    <div class="service-card reveal" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">🏠</span>
       <div class="service-name">Residential Deep Clean</div>
       <p class="service-desc">A thorough top-to-bottom clean of your home. We tackle every corner, surface, and fixture with eco-friendly products that are safe for your family and pets.</p>
       <span class="service-price">From R450 / session</span>
     </div>
-    <div class="service-card reveal" style="transition-delay:0.1s">
-      <span class="service-icon">🏢</span>
+    <div class="service-card reveal" style="transition-delay:0.1s" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">🏢</span>
       <div class="service-name">Commercial & Office</div>
       <p class="service-desc">Daily, weekly, or monthly cleaning contracts for offices, retail spaces, and commercial buildings. Discreet, professional, and fully insured.</p>
       <span class="service-price">Custom Pricing</span>
     </div>
-    <div class="service-card reveal" style="transition-delay:0.2s">
-      <span class="service-icon">✨</span>
+    <div class="service-card reveal" style="transition-delay:0.2s" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">✨</span>
       <div class="service-name">Move-In / Move-Out</div>
       <p class="service-desc">Leave your old space spotless or welcome a fresh start. We sanitise, degrease, and restore every room to pristine condition.</p>
       <span class="service-price">From R900 / property</span>
     </div>
-    <div class="service-card reveal" style="transition-delay:0.3s">
-      <span class="service-icon">🪟</span>
+    <div class="service-card reveal" style="transition-delay:0.3s" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">🪟</span>
       <div class="service-name">Window & Glass</div>
       <p class="service-desc">Interior and exterior window cleaning using streak-free techniques. Bring natural light back into your space.</p>
       <span class="service-price">From R250 / visit</span>
     </div>
-    <div class="service-card reveal" style="transition-delay:0.4s">
-      <span class="service-icon">🛋️</span>
+    <div class="service-card reveal" style="transition-delay:0.4s" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">🛋️</span>
       <div class="service-name">Upholstery & Carpet</div>
       <p class="service-desc">Hot-water extraction and steam cleaning for carpets, couches, and fabric surfaces. Removes allergens and deep-set stains.</p>
       <span class="service-price">From R350 / room</span>
     </div>
-    <div class="service-card reveal" style="transition-delay:0.5s">
-      <span class="service-icon">🏗️</span>
+    <div class="service-card reveal" style="transition-delay:0.5s" role="article" tabindex="0">
+      <span class="service-icon" aria-hidden="true">🏗️</span>
       <div class="service-name">Post-Construction</div>
       <p class="service-desc">After the builders leave, we take over. Dust, debris, paint splatters — we restore your newly built or renovated space to move-in ready.</p>
       <span class="service-price">Custom Pricing</span>
@@ -767,24 +798,24 @@
 </section>
 
 <!-- QUOTE CALCULATOR -->
-<section id="quote">
+<section id="quote" aria-labelledby="quote-title">
   <div class="quote-inner">
     <div class="reveal">
       <p class="section-tag">Instant Estimator</p>
-      <h2 class="section-title">Get your<br/><em>instant quote</em></h2>
+      <h2 class="section-title" id="quote-title">Get your<br/><em>instant quote</em></h2>
     </div>
-    <div class="quote-form reveal">
+    <form class="quote-form reveal" id="quoteForm">
       <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" id="q-name" placeholder="Jane Smith" oninput="calcQuote()"/>
+        <label for="q-name">Your Name</label>
+        <input type="text" id="q-name" placeholder="Jane Smith" required/>
       </div>
       <div class="form-group">
-        <label>Phone / WhatsApp</label>
-        <input type="tel" id="q-phone" placeholder="+27 82 000 0000"/>
+        <label for="q-phone">Phone / WhatsApp</label>
+        <input type="tel" id="q-phone" placeholder="+27 82 000 0000" required/>
       </div>
       <div class="form-group">
-        <label>Service Type</label>
-        <select id="q-service" onchange="calcQuote()">
+        <label for="q-service">Service Type</label>
+        <select id="q-service" onchange="calcQuote()" required>
           <option value="">— Select service —</option>
           <option value="450">Residential Deep Clean</option>
           <option value="0">Commercial / Office</option>
@@ -795,8 +826,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Property Size</label>
-        <select id="q-size" onchange="calcQuote()">
+        <label for="q-size">Property Size</label>
+        <select id="q-size" onchange="calcQuote()" required>
           <option value="1">Studio / Small (up to 60m²)</option>
           <option value="1.5">Medium (60–120m²)</option>
           <option value="2.2">Large (120–200m²)</option>
@@ -804,16 +835,16 @@
         </select>
       </div>
       <div class="form-group full">
-        <label>Number of rooms / areas: <span class="range-output" id="room-out">3</span></label>
-        <input type="range" id="q-rooms" min="1" max="12" value="3" oninput="document.getElementById('room-out').textContent=this.value; calcQuote()"/>
+        <label for="q-rooms">Number of rooms / areas: <span class="range-output" id="room-out">3</span></label>
+        <input type="range" id="q-rooms" min="1" max="12" value="3" oninput="updateRoomOutput(this.value); calcQuote()"/>
       </div>
       <div class="form-group full">
-        <label>Additional Notes</label>
+        <label for="q-notes">Additional Notes</label>
         <textarea id="q-notes" placeholder="Any special requirements, pets, allergies, access details..."></textarea>
       </div>
 
       <!-- Result -->
-      <div class="quote-result" id="quoteResult">
+      <div class="quote-result" id="quoteResult" role="status" aria-live="polite">
         <div>
           <div class="quote-result-label">Estimated Starting Price</div>
           <div class="quote-result-price" id="quotePrice">R 0</div>
@@ -823,76 +854,76 @@
         </div>
       </div>
 
-      <div class="success-msg" id="successMsg" style="grid-column:1/-1">
+      <div class="success-msg" id="successMsg" role="alert">
         ✓ Your request has been received — we'll be in touch within 2 hours.
       </div>
 
-      <button class="btn-submit" onclick="submitQuote()">Send Booking Request →</button>
-    </div>
+      <button type="submit" class="btn-submit">Send Booking Request →</button>
+    </form>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials">
+<section id="testimonials" aria-labelledby="testimonials-title">
   <div class="section-header reveal">
     <div>
       <p class="section-tag">Client Stories</p>
-      <h2 class="section-title">Trusted by those<br/><em>who care</em></h2>
+      <h2 class="section-title" id="testimonials-title">Trusted by those<br/><em>who care</em></h2>
     </div>
   </div>
   <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
+    <article class="testimonial-card reveal">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
       <p class="testimonial-text">ClearSpace transformed our office. The team is meticulous, discreet, and always on time. Our workspace has never felt so professional.</p>
       <div class="testimonial-author">
         <strong>Sarah M.</strong>
         Operations Director, Cape Town
       </div>
-    </div>
-    <div class="testimonial-card reveal" style="transition-delay:0.12s">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
+    </article>
+    <article class="testimonial-card reveal" style="transition-delay:0.12s">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
       <p class="testimonial-text">They handled our post-renovation clean with incredible attention to detail. I didn't think it was possible to get the grout that white again.</p>
       <div class="testimonial-author">
         <strong>David K.</strong>
         Homeowner, Sandton
       </div>
-    </div>
-    <div class="testimonial-card reveal" style="transition-delay:0.24s">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
+    </article>
+    <article class="testimonial-card reveal" style="transition-delay:0.24s">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
       <p class="testimonial-text">Booked a move-out clean with 24 hours notice and they delivered perfectly. Got my full deposit back. Worth every cent.</p>
       <div class="testimonial-author">
         <strong>Lerato N.</strong>
         Tenant, Johannesburg North
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-labelledby="contact-title">
   <div class="contact-inner">
     <div class="reveal">
       <p class="section-tag">Get in Touch</p>
-      <h2 class="section-title" style="margin-bottom:48px">We're ready<br/><em>when you are</em></h2>
+      <h2 class="section-title" id="contact-title" style="margin-bottom:48px">We're ready<br/><em>when you are</em></h2>
       <div class="contact-info-item">
-        <div class="contact-icon">📞</div>
+        <div class="contact-icon" aria-hidden="true">📞</div>
         <div class="contact-info-text">
           <strong>Phone & WhatsApp</strong>
-          +27 71 828 0644
+          <a href="tel:+27718280644">+27 71 828 0644</a>
         </div>
       </div>
       <div class="contact-info-item">
-        <div class="contact-icon">✉️</div>
+        <div class="contact-icon" aria-hidden="true">✉️</div>
         <div class="contact-info-text">
           <strong>Email</strong>
-          hello@clearspace.co.za
+          <a href="mailto:hello@clearspace.co.za">hello@clearspace.co.za</a>
         </div>
       </div>
       <div class="contact-info-item">
-        <div class="contact-icon">🕐</div>
+        <div class="contact-icon" aria-hidden="true">🕐</div>
         <div class="contact-info-text">
           <strong>Operating Hours</strong>
           Mon–Sat: 07:00 – 19:00<br/>Sunday: By appointment
@@ -900,28 +931,28 @@
       </div>
     </div>
     <div class="reveal" style="transition-delay:0.15s">
-      <div class="contact-form">
-        <input type="text" id="c-name" placeholder="Your name"/>
-        <input type="email" id="c-email" placeholder="Email address"/>
-        <textarea id="c-msg" placeholder="Tell us about your space and what you need..."></textarea>
-        <div class="success-msg" id="contactSuccess">
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="c-name" placeholder="Your name" required/>
+        <input type="email" id="c-email" placeholder="Email address" required/>
+        <textarea id="c-msg" placeholder="Tell us about your space and what you need..." required></textarea>
+        <div class="success-msg" id="contactSuccess" role="alert">
           ✓ Message sent — we'll respond within a few hours.
         </div>
-        <button class="btn-primary" onclick="submitContact()" style="width:100%">Send Message →</button>
-      </div>
+        <button type="submit" class="btn-primary" style="width:100%">Send Message →</button>
+      </form>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-logo">Clear<span>Space</span></div>
   <div class="footer-copy">© 2025 ClearSpace. All rights reserved.</div>
 </footer>
 
 <!-- CHAT FAB -->
-<div class="chat-fab" id="chatFab" onclick="toggleChat()">💬</div>
-<div class="chat-panel" id="chatPanel">
+<button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Open chat support" aria-expanded="false">💬</button>
+<div class="chat-panel" id="chatPanel" role="region" aria-label="Chat support">
   <div class="chat-header">
     <div class="chat-header-dot"></div>
     <div class="chat-header-name">ClearSpace Support</div>
@@ -931,23 +962,37 @@
   </div>
   <div class="chat-input-row">
     <input type="text" id="chatInput" placeholder="Type a message…" onkeydown="if(event.key==='Enter') sendChat()"/>
-    <button class="chat-send" onclick="sendChat()">➤</button>
+    <button class="chat-send" onclick="sendChat()" aria-label="Send message">➤</button>
   </div>
 </div>
 
 <script>
-  // CURSOR
+  // CURSOR (Enhanced with optional visibility toggle)
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
+  let cursorVisible = false;
+
   document.addEventListener('mousemove', e => {
+    if (!cursorVisible) {
+      cursor.classList.add('visible');
+      ring.classList.add('visible');
+      cursorVisible = true;
+    }
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
-    setTimeout(() => {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top  = e.clientY + 'px';
-    }, 60);
+    ring.style.left = e.clientX + 'px';
+    ring.style.top  = e.clientY + 'px';
   });
-  document.querySelectorAll('button, a, input, select, textarea, .service-card').forEach(el => {
+
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('visible');
+    ring.classList.remove('visible');
+    cursorVisible = false;
+  });
+
+  // Cursor expansion on hover
+  const interactiveElements = document.querySelectorAll('button, a, input, select, textarea, .service-card');
+  interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.style.width = '20px';
       cursor.style.height = '20px';
@@ -968,10 +1013,14 @@
     const step = Math.ceil(target / 60);
     const timer = setInterval(() => {
       start += step;
-      if (start >= target) { el.textContent = target + (el.dataset.suffix || ''); clearInterval(timer); }
+      if (start >= target) { 
+        el.textContent = target + (el.dataset.suffix || ''); 
+        clearInterval(timer); 
+      }
       else el.textContent = start;
     }, 24);
   }
+
   const counters = document.querySelectorAll('[data-count]');
   const countObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -987,88 +1036,117 @@
   const reveals = document.querySelectorAll('.reveal');
   const revObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        revObs.unobserve(e.target); 
+      }
     });
   }, { threshold: 0.1 });
   reveals.forEach(r => revObs.observe(r));
 
   // QUOTE CALCULATOR
+  function updateRoomOutput(value) {
+    document.getElementById('room-out').textContent = value;
+  }
+
   function calcQuote() {
     const svc = parseFloat(document.getElementById('q-service').value) || 0;
     const size = parseFloat(document.getElementById('q-size').value) || 1;
     const rooms = parseInt(document.getElementById('q-rooms').value) || 1;
     if (!svc) return;
-    const estimate = Math.round(svc * size * (1 + (rooms - 1) * 0.18));
-    const el = document.getElementById('quotePrice');
-    el.textContent = 'R ' + estimate.toLocaleString();
+
+    const basePrice = svc * size * (1 + (rooms - 1) * 0.15);
+    document.getElementById('quotePrice').textContent = 'R ' + Math.round(basePrice);
     document.getElementById('quoteResult').classList.add('visible');
   }
 
+  function submitQuote(e) {
+    if (e) e.preventDefault();
+    const name = document.getElementById('q-name').value;
+    const phone = document.getElementById('q-phone').value;
+    const service = document.getElementById('q-service').value;
+    const notes = document.getElementById('q-notes').value;
+
+    if (!name || !phone || !service) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Simulate form submission (replace with your backend API)
+    console.log('Quote submitted:', { name, phone, service, notes });
+    
+    document.getElementById('successMsg').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('quoteForm').reset();
+      document.getElementById('successMsg').classList.remove('show');
+      document.getElementById('quoteResult').classList.remove('visible');
+    }, 3000);
+  }
+
+  // CONTACT FORM
+  function submitContact(e) {
+    if (e) e.preventDefault();
+    const name = document.getElementById('c-name').value;
+    const email = document.getElementById('c-email').value;
+    const msg = document.getElementById('c-msg').value;
+
+    if (!name || !email || !msg) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    // Simulate form submission (replace with your backend API)
+    console.log('Contact submitted:', { name, email, msg });
+    
+    document.getElementById('contactSuccess').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('contactForm').reset();
+      document.getElementById('contactSuccess').classList.remove('show');
+    }, 3000);
+  }
+
+  // NAVIGATION
   function scrollToQuote() {
     document.getElementById('quote').scrollIntoView({ behavior: 'smooth' });
   }
 
-  function submitQuote() {
-    const name = document.getElementById('q-name').value.trim();
-    const svc = document.getElementById('q-service').value;
-    if (!name || !svc) { alert('Please fill in your name and service type.'); return; }
-    document.getElementById('successMsg').classList.add('show');
-    setTimeout(() => document.getElementById('successMsg').classList.remove('show'), 5000);
-  }
+  // Attach form submit handlers
+  document.getElementById('quoteForm').addEventListener('submit', submitQuote);
+  document.getElementById('contactForm').addEventListener('submit', submitContact);
 
-  function submitContact() {
-    const name = document.getElementById('c-name').value.trim();
-    const email = document.getElementById('c-email').value.trim();
-    if (!name || !email) { alert('Please enter your name and email.'); return; }
-    document.getElementById('contactSuccess').classList.add('show');
-    document.getElementById('c-name').value = '';
-    document.getElementById('c-email').value = '';
-    document.getElementById('c-msg').value = '';
-    setTimeout(() => document.getElementById('contactSuccess').classList.remove('show'), 5000);
-  }
-
-  // CHAT BOT
-  const replies = {
-    default: "Thanks for reaching out! For a detailed quote, scroll up and use our instant estimator, or call us on +27 11 000 0000.",
-    price: "Our residential deep clean starts at R450. Use our quote calculator on the page for an instant estimate based on your property size!",
-    hours: "We operate Monday–Saturday from 07:00–19:00, and Sundays by appointment.",
-    book: "To book, fill in the quote form on this page or WhatsApp us at +27 11 000 0000. We respond within 2 hours.",
-    hello: "Hello there! 👋 How can I help you today?",
-    hi: "Hi! How can I assist you?",
-    service: "We offer residential deep cleaning, commercial/office cleaning, move-in/move-out, windows, upholstery & carpet, and post-construction cleaning.",
-  };
-
+  // CHAT WIDGET
   function toggleChat() {
     const panel = document.getElementById('chatPanel');
+    const fab = document.getElementById('chatFab');
     panel.classList.toggle('open');
+    fab.setAttribute('aria-expanded', panel.classList.contains('open'));
   }
 
   function sendChat() {
     const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (!msg) return;
     const messages = document.getElementById('chatMessages');
+    const text = input.value.trim();
 
-    const userEl = document.createElement('div');
-    userEl.className = 'chat-msg user';
-    userEl.textContent = msg;
-    messages.appendChild(userEl);
+    if (!text) return;
+
+    // User message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user';
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
     input.value = '';
     messages.scrollTop = messages.scrollHeight;
 
+    // Bot response (simulated)
     setTimeout(() => {
-      const lower = msg.toLowerCase();
-      let reply = replies.default;
-      for (const key of Object.keys(replies)) {
-        if (lower.includes(key)) { reply = replies[key]; break; }
-      }
-      const botEl = document.createElement('div');
-      botEl.className = 'chat-msg bot';
-      botEl.textContent = reply;
-      messages.appendChild(botEl);
+      const botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot';
+      botMsg.textContent = 'Thanks for your message! A team member will respond shortly.';
+      messages.appendChild(botMsg);
       messages.scrollTop = messages.scrollHeight;
-    }, 700);
+    }, 500);
   }
 </script>
+
 </body>
 </html>
